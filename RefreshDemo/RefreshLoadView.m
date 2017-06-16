@@ -8,15 +8,17 @@
 
 #import "RefreshLoadView.h"
 
+CFTimeInterval RefreshScrollDuration = 0.5;
+
 @interface RefreshLoadView ()
 
-@property (nonatomic, copy) void (^action)();
+@property (nonatomic, copy) void (^action)(void);
 
 @end
 
 @implementation RefreshLoadView
 
-- (instancetype)initWithAction:(void (^)())action
+- (instancetype)initWithAction:(void (^)(void))action
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {

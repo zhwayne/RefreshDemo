@@ -8,15 +8,20 @@
 
 #import "RefreshLoadView.h"
 
-typedef NS_ENUM(NSUInteger, RefreshStatus) {
-    RefreshStatusNormal,
-    RefreshStatusReady,
-    RefreshStatusRefreshing
-};
+
+@class RefreshHeader;
+@protocol RefreshHeaderDelegate <NSObject>
+
+@optional
+
+- (void)refreshHeader:(RefreshHeader *)header changeToState:(RefreshState)state progress:(CGFloat)progress;
+
+@end
 
 @interface RefreshHeader : RefreshLoadView
 
-@property (nonatomic, assign) BOOL isRefreshing;
-@property (nonatomic, assign) RefreshStatus status;
+@property (nonatomic, weak) id<RefreshHeaderDelegate> delegate;
+
+@property (nonatomic, assign) RefreshState state;
 
 @end

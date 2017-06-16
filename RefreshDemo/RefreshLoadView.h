@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+extern CFTimeInterval RefreshScrollDuration;
+
+typedef NS_ENUM(NSUInteger, RefreshState) {
+    RefreshStatePossible,
+    RefreshStatePreparing,
+    RefreshStateReady,
+    RefreshStateRefreshing
+};
+
+
 @interface RefreshLoadView : UIView
 
-- (instancetype)initWithAction:(void (^)())action;
+- (instancetype)initWithAction:(void (^)(void))action;
 
 - (void)beginAction;
 - (void)endAction;
